@@ -14,6 +14,7 @@ var game = {
         this.noOfLettersInWord  = 0;
         this.guessesLeft = 0;
         this.match_point = 0;
+        this.guessedAllLetters = '';
         this.guessedLettersArr = [];
         this.spacePositionArr = [];
     },
@@ -53,6 +54,7 @@ var game = {
     },
     guessWord: function(key){
         console.log(this.word);
+        this.guessedAllLetters += key + ' ';
         var position = this.word.indexOf(key);
         //console.log(position);
         while (position !== -1) {
@@ -88,5 +90,5 @@ document.onkeyup = function(){
     guessedLetters = guessedLetters.replace(/,/g, ' ');
     document.getElementById('word_id').textContent    = guessedLetters;
     document.getElementById('guesses_id').textContent = game.guessesLeft + " guesses left";
-    
+    document.getElementById('guessed_all_letters_id').textContent = game.guessedAllLetters;
 }
