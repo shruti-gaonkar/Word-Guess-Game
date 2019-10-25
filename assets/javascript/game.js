@@ -1,4 +1,6 @@
 var win = 0;
+var wordArr = [];
+wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
 
 /*function readTextFile(file)
 {
@@ -9,7 +11,6 @@ var win = 0;
 
 var game = {
     initialiseData: function(){
-        this.wordArr = [];
         this.word = '';
         this.noOfLettersInWord  = 0;
         this.guessesLeft = 0;
@@ -20,15 +21,20 @@ var game = {
     },
     importMovies(){
         //readTextFile('C:/UCLA/homework/Word-Guess-Game/assets/file/movies.txt');
-        this.wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
+        //wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
         //this.wordArr.push("Bambi");
     },
     getWordAndBlanks : function(){
-        this.importMovies();
+        //this.importMovies();
 
         /* get the word */
-        this.word = this.wordArr[Math.floor(Math.random() * this.wordArr.length)];
+        var word_position = Math.floor(Math.random() * wordArr.length);
+        this.word = wordArr[word_position];
         this.word = this.word.toLowerCase();
+
+        /* remove the word displayed in the game from the global array 
+        so that it is not played again */
+        console.log(wordArr.splice(word_position, 1));
 
         /* get no of letters in a word */
         this.noOfLettersInWord = this.word.length;
@@ -54,7 +60,7 @@ var game = {
         }
     },
     guessWord: function(key){
-        console.log(this.word);
+        //console.log(this.word);
         // is key was already pressed then dont show it again
         if(this.guessedAllLetters.indexOf(key) === -1) this.guessedAllLetters += key + ' ';
 
