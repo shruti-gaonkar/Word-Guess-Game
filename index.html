@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
@@ -27,19 +28,19 @@
                 <section class="section-outer">
                     <!-- Section 1 --> 
                     <section class="section-indent1">
-                        <div><img src="assets/images/disney_left_banner.png"></div>
+                        <div><img id="banner_id" src="assets/images/disney_left_banner.png"></div>
                     </section>
 
                     <section class="section-indent2">
                         <p>Press any key to get started!</p>
-                        <div>WINS</div>
-                        <div id="win_id"></div>
-                        <div>CURRENT WORD</div>
-                        <div id="word_id"></div>
-                        <div>NUMBER OF GUESSES REMAINING</div>
-                        <div id="guesses_id"></div>
-                        <div>LETTERS ALREADY GUESSED</div>
-                        <div id="guessed_all_letters_id"></div>
+                        <div class="rpad20">WINS</div>
+                        <div id="win_id" class="rpad5"></div>
+                        <div class="rpad20">CURRENT WORD</div>
+                        <div id="word_id" class="rpad5"></div>
+                        <div class="rpad20">NUMBER OF GUESSES REMAINING</div>
+                        <div id="guesses_id" class="rpad5"></div>
+                        <div class="rpad20">LETTERS ALREADY GUESSED</div>
+                        <div id="guessed_all_letters_id" class="rpad5"></div>
                     </section>
                 </section>
             </div>       

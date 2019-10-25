@@ -20,7 +20,8 @@ var game = {
     },
     importMovies(){
         //readTextFile('C:/UCLA/homework/Word-Guess-Game/assets/file/movies.txt');
-        this.wordArr.push("Cinderella", "Rupentzel", "Beauty and the Beast", "Bambi", "pocahonta", "Mulan");
+        this.wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
+        //this.wordArr.push("Bambi");
     },
     getWordAndBlanks : function(){
         this.importMovies();
@@ -44,7 +45,7 @@ var game = {
             }
             for(var i=0;i<this.noOfLettersInWord;i++){
                 if(this.spacePositionArr.includes(i)===true){
-                    this.guessedLettersArr.push('**');
+                    this.guessedLettersArr.push("&nbsp;");
                 }else{
                     this.guessedLettersArr.push('_');
                 }
@@ -54,9 +55,13 @@ var game = {
     },
     guessWord: function(key){
         console.log(this.word);
-        this.guessedAllLetters += key + ' ';
+        // is key was already pressed then dont show it again
+        if(this.guessedAllLetters.indexOf(key) === -1) this.guessedAllLetters += key + ' ';
+
         var position = this.word.indexOf(key);
         //console.log(position);
+        // if the guessed letter occurs multiple times the replace all blank positions
+        // with that letter
         while (position !== -1) {
             this.guessedLettersArr.splice(position, 1, key);
             position = this.word.indexOf(key, position + 1);
@@ -78,17 +83,26 @@ document.onkeyup = function(){
     }else if(game.guessesLeft>0 && letter!=' '){
         game.guessWord(letter);
     }
-
+    
     if(game.match_point>0){
+        // image name is stored without spaces
+        var image_name = game.guessedLettersArr.join('');
         game.initialiseData();
         game.getWordAndBlanks();
         win++;
         if(win>0)
         document.getElementById('win_id').textContent = win;
     }
-    var guessedLetters = game.guessedLettersArr.toString();
-    guessedLetters = guessedLetters.replace(/,/g, ' ');
+
+    // letters are displayed with spaces
+    var guessedLetters = game.guessedLettersArr.join(' ');
+    //guessedLetters = guessedLetters.replace(/,/g, ' ');
+    //console.log(guessedLetters);
     document.getElementById('word_id').textContent    = guessedLetters;
     document.getElementById('guesses_id').textContent = game.guessesLeft + " guesses left";
     document.getElementById('guessed_all_letters_id').textContent = game.guessedAllLetters;
+    
+    if(image_name){
+        document.getElementById("banner_id").src = "assets/images/" +  image_name +  ".jpg";
+    }
 }
