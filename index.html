@@ -7,13 +7,50 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 <body>
-    <h1>Word Guess Game</h1>
-    <h2></h2>
-    <div id="word_id"></div>
-    <div id="guesses_id"></div>
-    <div id="win_id"></div>
+    <header>
+        <div class="header-container">
+            <div class="header-div"><h1>Word Guess Game</h1></div>
+        </div>
+        <div class="clearfix"></div>
+</header>
+
+<main>
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <hr />
+            <div class="details">
+                <section class="section-outer">
+                    <!-- Section 1 --> 
+                    <section class="section-indent1">
+                        <div><img src="assets/images/disney_left_banner.png"></div>
+                    </section>
+
+                    <section class="section-indent2">
+                        <p>Press any key to get started!</p>
+                        <div>WINS</div>
+                        <div id="win_id"></div>
+                        <div>CURRENT WORD</div>
+                        <div id="word_id"></div>
+                        <div>NUMBER OF GUESSES REMAINING</div>
+                        <div id="guesses_id"></div>
+                        <div>LETTERS ALREADY GUESSED</div>
+                        <div id="guessed_all_letters_id"></div>
+                    </section>
+                </section>
+            </div>       
+        </section>
+    </div> 
+</main>
+
+<footer class="footer">Copyright @
+        <script>
+            document.write(new Date().getFullYear());
+        </script>
+</footer>
 </body>
 </html>

@@ -1,4 +1,12 @@
 var win = 0;
+
+/*function readTextFile(file)
+{
+    $.ajax(file, function(data) {
+        do_something_with(data)
+     }, 'text');
+}*/
+
 var game = {
     initialiseData: function(){
         this.wordArr = [];
@@ -9,8 +17,12 @@ var game = {
         this.guessedLettersArr = [];
         this.spacePositionArr = [];
     },
+    importMovies(){
+        //readTextFile('C:/UCLA/homework/Word-Guess-Game/assets/file/movies.txt');
+        this.wordArr.push("Cinderella", "Rupentzel", "Beauty and the Beast", "Bambi", "pocahonta", "Mulan");
+    },
     getWordAndBlanks : function(){
-        this.wordArr.push("Cinderella", "Rupentzel", "Beauty and the Beast");
+        this.importMovies();
 
         /* get the word */
         this.word = this.wordArr[Math.floor(Math.random() * this.wordArr.length)];
@@ -76,4 +88,5 @@ document.onkeyup = function(){
     guessedLetters = guessedLetters.replace(/,/g, ' ');
     document.getElementById('word_id').textContent    = guessedLetters;
     document.getElementById('guesses_id').textContent = game.guessesLeft + " guesses left";
+    
 }
