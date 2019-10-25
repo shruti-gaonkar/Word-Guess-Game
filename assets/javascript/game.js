@@ -96,17 +96,13 @@ document.onkeyup = function(){
         game.initialiseData();
         game.getWordAndBlanks();
         win++;
-        if(win>0)
-        document.getElementById('win_id').textContent = win;
+        if(win>0) document.getElementById('win_id').textContent = win;
     }
 
-    // letters are displayed with spaces
-    var guessedLetters = game.guessedLettersArr.join(' ');
-    //guessedLetters = guessedLetters.replace(/,/g, ' ');
-    //console.log(guessedLetters);
-    document.getElementById('word_id').textContent    = guessedLetters;
-    document.getElementById('guesses_id').textContent = game.guessesLeft + " guesses left";
-    document.getElementById('guessed_all_letters_id').textContent = game.guessedAllLetters;
+    /* letters are displayed with spaces */
+    document.getElementById('word_id').innerHTML                    = game.guessedLettersArr.join(' ');
+    document.getElementById('guesses_id').textContent               = game.guessesLeft + " guesses left";
+    document.getElementById('guessed_all_letters_id').textContent   = game.guessedAllLetters;
     
     if(image_name){
         document.getElementById("banner_id").src = "assets/images/" +  image_name +  ".jpg";
