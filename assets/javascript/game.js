@@ -36,7 +36,7 @@ var game = {
         var word_position = Math.floor(Math.random() * wordArr.length);
         this.word = wordArr[word_position];
         this.word = this.word.toLowerCase();
-        console.log(this.word);
+        //console.log(this.word);
         /* remove the word displayed in the game from the global array 
         so that it is not played again */
         wordArr.splice(word_position, 1);
