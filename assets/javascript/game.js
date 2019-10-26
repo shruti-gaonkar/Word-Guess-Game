@@ -42,7 +42,7 @@ var game = {
         /* get no of guesses left */
         this.guessesLeft = this.word.length * 2;
         
-        /* to display the blanks before word is guessed including spaces*/
+        /* to display the blank underlines before word is guessed including spaces*/
         if(this.noOfLettersInWord>0){
             spacePosition = this.word.indexOf(' ');
             while (spacePosition !== -1) {
@@ -60,14 +60,13 @@ var game = {
         }
     },
     guessWord: function(key){
-        //console.log(this.word);
-        // is key was already pressed then dont show it again
+        /* if key was already pressed then dont show it again in all guessed letters */
         if(this.guessedAllLetters.indexOf(key) === -1) this.guessedAllLetters += key + ' ';
 
         var position = this.word.indexOf(key);
-        //console.log(position);
-        // if the guessed letter occurs multiple times the replace all blank positions
-        // with that letter
+
+        /* if the guessed letter occurs multiple times then replace 
+        all guessed positions with that letter */
         while (position !== -1) {
             this.guessedLettersArr.splice(position, 1, key);
             position = this.word.indexOf(key, position + 1);
@@ -84,16 +83,17 @@ var game = {
 document.onkeyup = function(){
     var letter = event.key.toLowerCase();
     if((letter && !game.word) || game.guessesLeft==0){
-        /* get new word and reset variables when page loads or after no guesses left 
-        or after guessing word correctly  */
+        /* get new word and reset variables when page loads or after no guesses left  */
         game.initialiseData();
         game.getWordAndBlanks();
     }else if(game.guessesLeft>0 && letter!=' '){
         game.guessWord(letter);
     }
     
+    /* after guessing word correctly, reset variables and get new word */
     if(game.match_point>0){
-        // image name is stored without spaces
+        /* image name is stored without spaces. So append all arrays values
+         i.e letters without spaces */
         var image_name = game.guessedLettersArr.join('');
         game.initialiseData();
         game.getWordAndBlanks();

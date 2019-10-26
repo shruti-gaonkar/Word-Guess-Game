@@ -21,7 +21,7 @@ p{
     margin-bottom: 0.7em;
 }
 
-
+/* Fancy header style */
 
 header h1{
     left: 0;
@@ -43,6 +43,8 @@ header h1{
     10% {background-position:420px 0;}
     100% {background-position:420px 0;}
 }
+
+/* main game container style */
 
 .container{
     width: 60%;  
@@ -66,7 +68,6 @@ main{
 .section-indent2{
     float: left;
     padding: 15px 25px 10px 25px;
-    width: 60%;
     text-align: center;
 }
 
@@ -82,6 +83,7 @@ main{
     margin:10px 0 10px 0;
 }
 
+/* Footer style */
 .footer {
     flex-shrink: 0;
     background-color: #666666;
@@ -93,13 +95,37 @@ main{
 }
 
 @media only screen and (max-width: 980px) {
-    
+    #banner_id{
+        width:50px;
+        height:50px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-    
+    #banner_id{
+        width:50px;
+        height:50px;
+    }
 }
 
 @media only screen and (max-width: 640px) {
-    
+    header h1{
+        left: 0;
+        font-family: 'Mr Dafoe', cursive;
+        font-size: 40px;
+        margin-top: 20px;
+        margin-bottom: 0;
+        color: #EB219B;
+        -webkit-text-fill-color: rgba(253, 90, 250, 1);
+        text-shadow: -2px -2px 0 #FFBAF2;
+        -webkit-filter: drop-shadow(3px 3px 1px #441F62);
+        -webkit-transform: skew(-5deg,-5deg);
+        font-weight: normal;
+        text-align:center;
+    }
+
+    #banner_id{
+        width:50px;
+        height:50px;
+    }
 }
