@@ -1,13 +1,25 @@
 var win = 0;
 var wordArr = [];
-wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
 
-/*function readTextFile(file)
-{
-    $.ajax(file, function(data) {
-        do_something_with(data)
-     }, 'text');
-}*/
+wordArr.push(   "101 dalmatians",
+                "aladdin",
+                "aristocats",
+                "bambi",
+                "beauty and the beast",
+                "cinderella",
+                "frozen",
+                "hercules",
+                "high school musical",
+                "lady and the tramp",
+                "lilo and stitch",
+                "maleficent",
+                "mulan",
+                "oliver and company",
+                "pinocchio",
+                "pocahonta",
+                "tangled",
+                "wreck it ralph"
+            );
 
 var game = {
     initialiseData: function(){
@@ -19,22 +31,15 @@ var game = {
         this.guessedLettersArr = [];
         this.spacePositionArr = [];
     },
-    importMovies(){
-        //readTextFile('C:/UCLA/homework/Word-Guess-Game/assets/file/movies.txt');
-        //wordArr.push("cinderella", "rupentzel", "beauty and the beast", "bambi", "pocahonta", "mulan");
-        //this.wordArr.push("Bambi");
-    },
     getWordAndBlanks : function(){
-        //this.importMovies();
-
         /* get the word */
         var word_position = Math.floor(Math.random() * wordArr.length);
         this.word = wordArr[word_position];
         this.word = this.word.toLowerCase();
-
+        console.log(this.word);
         /* remove the word displayed in the game from the global array 
         so that it is not played again */
-        console.log(wordArr.splice(word_position, 1));
+        wordArr.splice(word_position, 1);
 
         /* get no of letters in a word */
         this.noOfLettersInWord = this.word.length;
@@ -61,7 +66,7 @@ var game = {
     },
     guessWord: function(key){
         /* if key was already pressed then dont show it again in all guessed letters */
-        if(this.guessedAllLetters.indexOf(key) === -1) this.guessedAllLetters += key + ' ';
+        if(this.guessedAllLetters.indexOf(key.toUpperCase()) === -1) this.guessedAllLetters += key.toUpperCase() + ' ';
 
         var position = this.word.indexOf(key);
 
@@ -95,6 +100,7 @@ document.onkeyup = function(){
         /* image name is stored without spaces. So append all arrays values
          i.e letters without spaces */
         var image_name = game.guessedLettersArr.join('');
+        image_name = image_name.replace(/&nbsp;/g, "_");
         game.initialiseData();
         game.getWordAndBlanks();
         win++;
