@@ -66,7 +66,11 @@ var game = {
     },
     guessWord: function(key){
         /* if key was already pressed then dont show it again in all guessed letters */
-        if(this.guessedAllLetters.indexOf(key.toUpperCase()) === -1) this.guessedAllLetters += key.toUpperCase() + ' ';
+        var newKeyPressed = false;
+        if(this.guessedAllLetters.indexOf(key.toUpperCase()) === -1) {
+           this.guessedAllLetters += key.toUpperCase() + ' '; 
+           newKeyPressed = true;
+        }
 
         var position = this.word.indexOf(key);
 
@@ -78,7 +82,7 @@ var game = {
         }
         if(this.guessedLettersArr.includes("_")===false){
             this.match_point++;
-        }else{
+        }else if(newKeyPressed===true){
             game.guessesLeft--;
         }
     }
