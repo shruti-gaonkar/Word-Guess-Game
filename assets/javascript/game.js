@@ -84,6 +84,8 @@ var game = {
 document.onkeyup = function(){
     var letter = event.key.toLowerCase();
     if((letter && !game.word) || game.guessesLeft==0){
+        /* get new word and reset variables when page loads or after no guesses left 
+        or after guessing word correctly  */
         game.initialiseData();
         game.getWordAndBlanks();
     }else if(game.guessesLeft>0 && letter!=' '){
@@ -104,6 +106,7 @@ document.onkeyup = function(){
     document.getElementById('guesses_id').textContent               = game.guessesLeft + " guesses left";
     document.getElementById('guessed_all_letters_id').textContent   = game.guessedAllLetters;
     
+    /* to display image after correct guess */
     if(image_name){
         document.getElementById("banner_id").src = "assets/images/" +  image_name +  ".jpg";
     }
