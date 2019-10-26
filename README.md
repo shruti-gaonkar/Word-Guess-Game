@@ -31,3 +31,5 @@
 ### Technologies
 
 HTML, CSS, Javasript
+
+* The game uses a fancy header and sticky footer.
